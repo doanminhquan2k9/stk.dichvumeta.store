@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bảo Trì Website</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #e3f2fd, #f8f9fa);
+      text-align: center;
+      padding: 50px;
+      position: relative;
+      min-height: 100vh;
+    }
+    .container {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+      display: inline-block;
+      margin-top: 50px;
+      max-width: 600px;
+      animation: fadeIn 1s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    h1 {
+      color: #343a40;
+      margin-bottom: 10px;
+    }
+    p {
+      color: #555;
+      margin-bottom: 10px;
+    }
+    .highlight {
+      color: #007bff;
+      font-weight: bold;
+    }
+    .loader {
+      border: 12px solid #f3f3f3;
+      border-top: 12px solid #007bff;
+      border-right: 12px solid #28a745;
+      border-bottom: 12px solid #ffc107;
+      border-left: 12px solid #dc3545;
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+      animation: spin 1.5s linear infinite;
+      margin: 0 auto 30px auto;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .account-info {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #eef3f7;
+      border-radius: 10px;
+      text-align: left;
+      box-shadow: 0 0 10px rgba(0, 123, 255, 0.1);
+      display: none;
+    }
+    .account-info h2 {
+      color: #007bff;
+      margin-bottom: 10px;
+    }
+    .account-info p {
+      margin: 5px 0;
+    }
+    .account-info .highlight {
+      cursor: pointer;
+      color: #007bff;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+    .toggle-button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      background-color: #007bff;
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.3s ease;
+    }
+    .toggle-button:hover {
+      background-color: #0056b3;
+    }
+    .chat-bubbles {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .chat-bubble {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background-color: #007bff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 30px;
+      text-decoration: none;
+      box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+      transition: transform 0.2s ease, background-color 0.3s ease;
+    }
+    .chat-bubble:hover {
+      background-color: #0056b3;
+      transform: scale(1.1);
+    }
+    .chat-bubble img {
+      width: 70%;
+      height: 70%;
+    }
+  </style>
+
+  <script>
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        alert('📋 Đã sao chép số tài khoản: ' + text);
+      }).catch(err => {
+        console.error('Không thể sao chép', err);
+      });
+    }
+    function toggleAccountInfo() {
+      var accountInfo = document.getElementById('account-info');
+      accountInfo.style.display = accountInfo.style.display === 'block' ? 'none' : 'block';
+    }
+    window.addEventListener('DOMContentLoaded', () => {
+      const audio = document.getElementById('bg-audio');
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(err => {
+          console.warn('⚠️ Trình duyệt chặn tự phát nhạc:', err);
+        });
+      }
+    });
+  </script>
+</head>
+<body>
+  <audio id="bg-audio" autoplay>
+    <source src="https://codervn.click/upfile/uploads/matketnoi.mp3" type="audio/mpeg">
+    Trình duyệt không hỗ trợ audio.
+  </audio>
+
+  <div class="container">
+    <div class="loader"></div>
+    <h1>🔧 Website Đang Bảo Trì</h1>
+    <p>Chúng tôi đang nâng cấp hệ thống. Dự kiến hoàn tất vào <span class="highlight">mai</span>.</p>
+    <p>🎉 Cảm ơn bạn đã kiên nhẫn đồng hành!</p>
+    <button class="toggle-button" onclick="toggleAccountInfo()">
+      💳 Số Tài Khoản
+    </button>
+    <div class="account-info" id="account-info">
+      <h2>Thông Tin Thanh Toán</h2>
+      <p>Số tài khoản: <span class="highlight" onclick="copyToClipboard('9704229203528138715')">9704229203528138715</span></p>
+      <p>Chủ tài khoản: DOAN ANH MINH</p>
+      <p>Ngân hàng: MB Bank</p>
+    </div>
+  </div>
+
+  <div class="chat-bubbles">
+    <a class="chat-bubble" href="https://t.me/Vanduy0982" target="_blank" title="Liên hệ Telegram">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+    </a>
+    <a class="chat-bubble" href="https://www.facebook.com/jivan.makabi" target="_blank" title="Liên hệ Facebook">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+    </a>
+  </div>
+</body>
+</html>
